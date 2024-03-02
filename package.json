@@ -1,0 +1,17 @@
+{
+  "name": "fe-interview",
+  "version": "1.0.0",
+  "description": "前端面试题汇总",
+  "main": "index.js",
+  "author": "935880623@qq.com",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-rc.44"
+  }
+}
