@@ -121,9 +121,6 @@ console.log(Object.is({}, {})); // false，不是严格相等，因为对象是�
     
 #### slice和splice区别
 
-## 事件代理和事件委托
-同一个概念的不同叫法，利用事件冒泡机制，为子元素绑定事件。
-
 ## hasOwnProperty
 判断对象是否存在某属性
 
