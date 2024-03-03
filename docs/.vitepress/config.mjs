@@ -12,7 +12,7 @@ export default defineConfig({
       { text: "CSS", link: "/css" },
       { text: "JavaScript", link: "/javascript/js基础" },
       { text: "WebApi", link: "/WebApi/DOM" },
-      { text: "Vue", link: "/vue" },
+      { text: "Vue", link: "/vue/" },
       {text: "HTTP", link: "/http/" },
       // { text: "React", link: "/react" },
       // { text: "Node", link: "/node" },
