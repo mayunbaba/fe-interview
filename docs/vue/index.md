@@ -1,5 +1,5 @@
 <script>
-import lifeCycle from './lifeCycle.vue'
+import lifeCycle from './demo/lifeCycle.vue'
 
 export default {
   components: {
@@ -63,17 +63,15 @@ destroyed
   - activated
   - deactivated
 
-## 关于组件
-- 组件传值方式
-  - 父传子
-    - props: 单向传值、子组件不可修改
-    - $parent：直接取值，子组件可修改父组件值（不建议） 
-    - 依赖注入（provide/inject） 数据不是响应式的
-  - 子传父
-    - $emit
-  - 兄弟组件
-    - 共同的父组件传递数据
-    - 事件总线
-    - vuex
-  - $parent、$refs
+## 组件传值方式
+- 父传子
+  - props: 单向传值、子组件不可修改
+  - 依赖注入（provide/inject） 数据不是响应式的
+- 子传父
+  - $emit
+- 兄弟组件
+  - 共同的父组件传递数据
+  - 事件总线
+  - vuex
+- $parent、$child、$refs
 
