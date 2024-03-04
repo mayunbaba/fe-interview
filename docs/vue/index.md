@@ -1,3 +1,14 @@
+<script>
+import lifeCycle from './lifeCycle.vue'
+
+export default {
+  components: {
+    lifeCycle
+  },
+}
+</script>
+<lifeCycle />
+
 ## vue2生命周期
 ```
 创建阶段
@@ -15,10 +26,37 @@ destroyed
 ```
 
 - 父组件引入子组件，生命周期的执行顺序是
-  - 父：beforeCreate、created、beforeMounted
-  - 子：beforeCreate、created、beforeMounted、mounted
-  - 父：mounted
   
+  创建阶段
+
+  |父组件|子组件|
+  |--|--|
+  |beforeCreate||
+  |created||
+  |beforeMount||
+  ||beforeCreate|
+  ||created|
+  ||beforeMount|
+  |--|--|
+  ||mounted|
+  |mounted||
+
+  更新阶段
+  |父组件|子组件|
+  |--|--|
+  |beforeUpdate||
+  ||beforeUpdate|
+  ||updated|
+  |updated||
+
+  销毁阶段
+  |父组件|子组件|
+  |--|--|
+  |beforeDestroy||
+  ||beforeDestroy|
+  ||destroyed|
+  |destroyed||
+
 - 发送请求放在哪个生命周期
   - 官方没有明确规定，`created、 mounted`都可以，created可以使请求早发起几毫秒（渲染页面的时间），mounted中DOM元素已经挂载完成，做一些相关操作更加方便。根据页面渲染的先后顺序，和父子组件生命周期调整。
 - keep-alive
