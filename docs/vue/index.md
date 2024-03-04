@@ -74,4 +74,5 @@ destroyed
   - 事件总线
   - vuex
 - $parent、$child、$refs
+  - 不建议修改数据，调用事件（vant就这么用）
 

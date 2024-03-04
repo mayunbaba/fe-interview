@@ -6,7 +6,7 @@
     </div>
     <div>
       <h5>子组件修改父组件数据：</h5>
-      <button class="button-s" @click="$emit('update:num', num++)">v-model配合$emit。sync vue3已废弃</button>
+      <button class="button-s" @click="$emit('update:num', 100)">v-model配合$emit。sync vue3已废弃</button>
       <button class="button-s danger" @click="$parent.num++">$parent 不建议（造成代码无法维护）</button>
     </div>
     <div>
