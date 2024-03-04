@@ -76,3 +76,11 @@ destroyed
 - $parent、$child、$refs
   - 不建议修改数据，调用事件（vant就这么用）
 
+## v-show和v-if区别
+
+## 为什么v-for需要使用key
+
+## v-for和v-if优先级，如何一起使用
+
+## 
+
