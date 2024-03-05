@@ -30,9 +30,16 @@ class Teacher extends People {
   }
 }
 
+const people = new People('Jack', 25);
+people.sayHi();
+
 const student = new Student('Tom', 18, 'MIT');
 student.sayHi();
 student.study();
+
+const student2 = new Student.prototype.constructor('Lily', 20, 'Havard');
+student2.sayHi();
+student2.study();
 
 const teacher = new Teacher('Jerry', 30, 'Math');
 teacher.sayHi();
@@ -45,17 +52,20 @@ student instanceof Object; // true
 
 // 隐式原型 __proto__
 // 显式原型 prototype
-console.log(student.__proto__); // People { constructor: class Student, study: f }
-console.log(Student.prototype); // People { constructor: class Teacher, study: f }
+console.log(student.__proto__, 'student.__proto__'); // People { constructor: class Student, study: f }
+console.log(Student.prototype, 'Student.prototype'); // People { constructor: class Teacher, study: f }
 console.log(student.__proto__ === Student.prototype); // true
-// student的隐士原型指向Student的显式原型
+// student的隐式原型指向Student的显式原型
 
-console.log(Student.prototype.__proto__); // { constructor: class People, sayHi: f }
-console.log(People.prototype); // { constructor: class People, sayHi: f }
-console.log(Student.prototype.__proto__ === People.prototype); // true
+console.log(Student.prototype.__proto__, 'Student.prototype.__proto__'); // { constructor: class People, sayHi: f }
+console.log(People.prototype, 'People.prototype'); // { constructor: class People, sayHi: f }
+console.log(Student.prototype.__proto__ === People.prototype, People.prototype === people.__proto__); // true
 
-console.log(People.prototype.__proto__); // { constructor: class Object }
-console.log(Object.prototype.__proto__); // null
+console.log(People.prototype.__proto__, 'People.prototype.__proto__'); // { constructor: class Object }
+console.log(Object.prototype, 'Object.prototype'); // { constructor: class Object }
+console.log(People.prototype.__proto__ === Object.prototype); // true
+
+console.log(Object.prototype.__proto__, 'Object.prototype.__proto__'); // null
 
 
 </script>

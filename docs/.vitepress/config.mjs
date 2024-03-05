@@ -37,6 +37,7 @@ export default defineConfig({
         { text: "原型和原型链", link: "/javascript/原型和原型链" },
         { text: "作用域和闭包", link: "/javascript/作用域和闭包" },
         { text: "异步和单线程", link: "/javascript/异步和单线程" },
+        { text: "栈和堆", link: "https://juejin.cn/post/6868166748709847053" },
         // { text: "ES6", link: "/javascript/es6" },
         // { text: "TypeScript", link: "/javascript/typescript" },
         // { text: "正则表达式", link: "/javascript/regexp" },
