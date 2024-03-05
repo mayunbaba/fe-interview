@@ -12,7 +12,7 @@ export default {
 <lifeCycle />
 <watchC />
 
-## vue2生命周期
+## vue生命周期
 ```
 创建阶段
 beforeCreated
@@ -28,7 +28,7 @@ beforeDestory （onBeforeUnmount）
 destroyed （onUnmounted）
 ```
 
-- 父组件引入子组件，生命周期的执行顺序是
+## 父组件引入子组件，生命周期的执行顺序是
   
   创建阶段
 
@@ -118,3 +118,9 @@ vue2中 watch先执行
 
 vue3中 watch后执行
 
+## 跨页面传参
+1. 路由传参
+   1. URL传参 (query)
+   2. router传参 (动态路由params, 需要预设)
+
+## vuex
