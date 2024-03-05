@@ -1,30 +1,31 @@
 <script>
 import lifeCycle from './demo/lifeCycle.vue'
-import instruct from './demo/instruct.vue'
+import watchC from './demo/watchC.vue'
 
 export default {
   components: {
     lifeCycle,
-    instruct
+    watchC
   },
 }
 </script>
 <lifeCycle />
+<watchC />
 
 ## vue2生命周期
 ```
 创建阶段
 beforeCreated
-created
+created（setup）
 挂载阶段（渲染dom）
-beforeMount
-mounted
+beforeMount（onBeforeMount）
+mounted （onMounted）
 更新阶段
-beforeUpdate
-updated
+beforeUpdate （onBeforeUpdate）
+updated （onUpdated）
 销毁阶段
-beforeDestory
-destroyed
+beforeDestory （onBeforeUnmount）
+destroyed （onUnmounted）
 ```
 
 - 父组件引入子组件，生命周期的执行顺序是
@@ -106,6 +107,14 @@ key 主要用于 DOM Diff 算法，它在同级比较时，会比较当前标签
 
 
 ## v-for和v-if优先级，如何一起使用
+vue2中 v-for优先级更高，一起使用会造成性能浪费。
 
-## 
+vue3中，v-if优先级更高，一起使用会不渲染。
+
+**最优解** 使用filter过滤数据
+
+## watch和created执行顺序
+vue2中 watch先执行
+
+vue3中 watch后执行
 
