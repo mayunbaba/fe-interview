@@ -8,6 +8,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
+      { text: "面试", link: "/面试/简历" },
       { text: "HTML", link: "/html" },
       { text: "CSS", link: "/css" },
       { text: "JavaScript", link: "/javascript/js基础" },
@@ -50,6 +51,12 @@ export default defineConfig({
         { text: "BOM", link: "/WebApi/BOM" },
         { text: "存储", link: "/WebApi/存储" },
         { text: "ajax", link: "/WebApi/ajax" },
+      ],
+      "面试": [
+        { text: "面试流程", link: "/面试/面试流程" },
+        { text: "项目开发", link: "/面试/项目开发" },
+        { text: "star模型", link: "/面试/star" },
+        { text: "简历", link: "/面试/简历" },
       ],
     },
 

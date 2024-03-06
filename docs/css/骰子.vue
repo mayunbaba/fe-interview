@@ -61,13 +61,13 @@
   overflow: hidden;
 }
 .dot {
-  width: 30%;
-  height: 30%;
+  width: 60px;
+  height: 60px;
   background-color: #000;
   border-radius: 50%;
 }
 
-.face:nth-child(1) {
+/* .face:nth-child(1) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,5 +126,5 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-}
+} */
 </style>
