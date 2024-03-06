@@ -15,6 +15,7 @@ export default defineConfig({
       { text: "WebApi", link: "/WebApi/DOM" },
       { text: "Vue", link: "/vue/" },
       {text: "HTTP", link: "/http/" },
+      { text: "开发小记", link: "/coding/轮询" },
       // { text: "React", link: "/react" },
       // { text: "Node", link: "/node" },
       // { text: "Webpack", link: "/webpack" },
@@ -58,6 +59,9 @@ export default defineConfig({
         { text: "star模型", link: "/面试/star" },
         { text: "简历", link: "/面试/简历" },
       ],
+      "/开发小记": [
+        { text: "轮询", link: "/coding/轮询" },
+      ]
     },
 
     socialLinks: [
