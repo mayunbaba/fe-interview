@@ -58,6 +58,7 @@ export default defineConfig({
         { text: "项目开发", link: "/职场/项目开发" },
         { text: "star模型", link: "/职场/star" },
         { text: "SBETF模型", link: "/职场/sbetf" },
+        { text: "pyramid模型", link: "/职场/pyramid" },
         { text: "简历", link: "/职场/简历" },
       ],
       "/开发小记": [
