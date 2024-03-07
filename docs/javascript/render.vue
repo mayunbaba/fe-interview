@@ -24,7 +24,7 @@ function addDom() {
   p.innerHTML = "我是新添加的dom " + new Date().toLocaleString();
   const buttonWrap = document.querySelector(".button-wrap");
   buttonWrap.appendChild(p);
-  die(3000);
+  die(2000);
 }
 </script>
 <style>
