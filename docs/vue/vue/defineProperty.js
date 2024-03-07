@@ -35,7 +35,8 @@ const obj2 = {
 defineReactive(obj2, 'name', obj2.name)
 defineReactive(obj2, 'age', obj2.age)
 
-console.log('--劫持数据--')
+console.log('--劫持数据开始--')
 obj2.name // get name LWH
 obj2.name = 'lwh' // set name lwh
 obj2.age // get age 18
+console.log('--劫持数据结束--')

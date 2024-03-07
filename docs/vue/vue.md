@@ -1,11 +1,13 @@
 # vue双向绑定原理
 
-<script>
+<!-- <script>
 import './vue/defineProperty.js'
-</script>
+import './vue/proxy.js'
+</script> -->
 ## 数据劫持
 - Object.defineProperty: 通过重写get、set方法劫持数据
-- Proxy
+- Proxy: 重写get、set 方法劫持数据
+  [demo](http://127.0.0.1:5500/example/jiechi.html)
 
 
 ## 双向绑定原理
