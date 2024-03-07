@@ -1,3 +1,4 @@
+// Dep.js
 class Dep {
   constructor() {
     this.subs = [];
@@ -13,3 +14,4 @@ class Dep {
     });
   }
 }
+Dep.target = null;

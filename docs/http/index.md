@@ -40,3 +40,9 @@ GET(查) POST(增) PUT（改） DELETE（删）
 - 客户端发起连接请求
 - 服务器响应连接请求
 - 客户端确认连接
+
+## preload和prefetch区别
+- preload 提高资源加载优先级。一般用于加载首屏CSS、JavaScript。
+- prefetch 降低资源加载优先级。一般用于其他页面的资源。
+[demo](http://127.0.0.1:5500/example/pre/1.html)
+
