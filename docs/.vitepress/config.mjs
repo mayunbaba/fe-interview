@@ -57,7 +57,7 @@ export default defineConfig({
         { text: "面试流程", link: "/职场/面试流程" },
         { text: "项目开发", link: "/职场/项目开发" },
         { text: "star模型", link: "/职场/star" },
-        { text: "SBETF模型", link: "/职场/sbetf" },
+        { text: "spetf模型", link: "/职场/spetf" },
         { text: "pyramid模型", link: "/职场/pyramid" },
         { text: "简历", link: "/职场/简历" },
       ],

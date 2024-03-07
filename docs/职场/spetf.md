@@ -1,8 +1,8 @@
-# SBETF模型
+# SPETF模型
 
-## 什么SBETF模型
+## 什么SPETF模型
 - Suitable /ˈsuːtəb(ə)l/: 选择合适的人
-- Background: 问题的背景
+- Position: 问题的背景
 - Express: 准确的表达问题
 - Trust：信任
 - FeedBack：给予反馈
