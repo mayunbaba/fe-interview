@@ -36,10 +36,11 @@ export default defineConfig({
     sidebar: {
       "/javascript": [
         { text: "js基础", link: "/javascript/js基础" },
+        { text: "栈和堆", link: "https://juejin.cn/post/6868166748709847053" },
         { text: "原型和原型链", link: "/javascript/原型和原型链" },
         { text: "作用域和闭包", link: "/javascript/作用域和闭包" },
         { text: "异步和单线程", link: "/javascript/异步和单线程" },
-        { text: "栈和堆", link: "https://juejin.cn/post/6868166748709847053" },
+        { text: "promise", link: "/javascript/promise" },
         // { text: "ES6", link: "/javascript/es6" },
         // { text: "TypeScript", link: "/javascript/typescript" },
         // { text: "正则表达式", link: "/javascript/regexp" },
@@ -57,12 +58,22 @@ export default defineConfig({
         { text: "面试流程", link: "/职场/面试流程" },
         { text: "项目开发", link: "/职场/项目开发" },
         { text: "star模型", link: "/职场/star" },
-        { text: "SBETF模型", link: "/职场/sbetf" },
+        { text: "spetf模型", link: "/职场/spetf" },
+        { text: "pyramid模型", link: "/职场/pyramid" },
         { text: "简历", link: "/职场/简历" },
       ],
       "/开发小记": [
         { text: "轮询", link: "/coding/轮询" },
-      ]
+      ],
+      "/vue": [
+        { text: "vue基础", link: "/vue/" },
+        { text: "vue双向绑定原理", link: "/vue/vue" },
+        { text: "vue-router", link: "/vue/vue-router" },
+        { text: "vuex", link: "/vue/vuex" },
+        // { text: "vue-cli", link: "/vue/vue-cli" },
+        // { text: "vuepress", link: "/vue/vuepress" },
+        // { text: "nuxt", link: "/vue/nuxt" },
+      ],
     },
 
     socialLinks: [
