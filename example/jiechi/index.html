@@ -12,81 +12,51 @@
     <h4>{{title}}</h4>
     <input type="text" v-model="message.detail">
     <button @click="changeMessage">修改数据</button>
+    <input type="text" v-model="count">
+    <button @click="add">增加</button>
   </div>
-  <!-- <script src="/docs/vue/vue/defineProperty.js"></script>
-  <script src="/docs/vue/vue/proxy.js"></script> -->
+  <!-- <script src="./defineProperty.js"></script>
+  <script src="./proxy.js"></script> -->
+  <script src="./vue.js"></script>
   <script>
-    // 创建一个递归代理函数，用于代理整个数据对象
-    function createProxy(data, updateCallback) {
-      if (typeof data !== 'object' || data === null) {
-        return data;
-      }
-
-      return new Proxy(data, {
-        get(target, key) {
-          return createProxy(target[key], updateCallback);
-        },
-        set(target, key, value) {
-          target[key] = value;
-          // 触发更新回调
-          updateCallback();
-          return true;
-        }
-      });
-    }
-
-    class Vue {
-      constructor(options) {
-        this.$data = options.data;
-        this.$methods = options.methods;
-        this.$el = document.querySelector(options.el);
-        this.proxyData();
-
-        // 初始化视图
-        this.render();
-      }
-
-      proxyData() {
-        // 使用Proxy代理data对象
-        this.$data = createProxy(this.$data, () => {
-          this.render();
-        });
-      }
-
-      render() {
-        // 更新视图
-        const h4 = this.$el.querySelector('h4');
-        h4.textContent = this.$data.title;
-        const input = this.$el.querySelector('input');
-        input.value = this.$data.message.detail;
-
-        // 监听input的变化
-        input.oninput = (e) => {
-          this.$data.message.detail = e.target.value;
-        };
-
-        // 监听button的点击
-        const button = this.$el.querySelector('button');
-        button.onclick = () => {
-          this.$methods.changeMessage.call(this.$data);
-        };
-      }
-    }
-
+ 
     // 实例化Vue
     const vm = new Vue({
       el: '#app',
       data: {
-        title: '未使用发布订阅者模式、虚拟DOM的Vue实现',
+        title: '未使用发布订阅者模式、虚拟DOM、简易的Vue实现',
         message: {
           detail: '第一次的数据'
         },
+        count: 0
       },
       methods: {
         changeMessage() {
-          this.message.detail = '修改后的数据';
+          this.$data.message.detail = '修改后的数据';
+        },
+        add() {
+          this.$data.count++;
         }
+      },
+      render() {
+        const h4 = document.querySelector('h4');
+        h4.innerHTML = this.$data.title;
+        const input = document.querySelector('input');
+        input.value = this.$data.message.detail;
+
+        const input2 = document.querySelectorAll('input')[1];
+        input2.value = this.$data.count;
       }
+    });
+
+    // 绑定点击事件
+    document.querySelector('button').addEventListener('click', function () {
+      vm.changeMessage.call(vm);
+      vm.render();
+    });
+    document.querySelectorAll('button')[1].addEventListener('click', function () {
+      vm.add.call(vm);
+      vm.render();
     });
   </script>
 </body>
