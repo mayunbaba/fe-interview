@@ -9,9 +9,11 @@
 
 ## mvvm模式
 
-## vue响应式原理
-
 ## 双向绑定原理
+[深入响应式原理：官网](https://cn.vuejs.org/guide/extras/reactivity-in-depth.html)
+
+[实现简单的MVVM：附代码](https://www.jianshu.com/p/0983d2d0a416)
+
 Vue 数据双向绑定原理是通过 数据劫持 + 发布者-订阅者模式 的方式来实现的。
 
 **具体实现**
@@ -22,7 +24,7 @@ Vue 数据双向绑定原理是通过 数据劫持 + 发布者-订阅者模式 �
   - 把模板中的变量解析成数据
   - 根据指令绑定事件
   - 添加订阅者，如果数据变化，收到通知，更新视图。
-3. 
+3. Watcher类是连接observer和compile的桥梁，
 
 
 
