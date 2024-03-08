@@ -9,9 +9,9 @@
 
 <body>
   <div id="app">
-    <h4>已经实现的功能，数据修改更新页面数据。</h4>
-    <h4>目前数据和对应的DOM之间关系靠硬编码实现，所以引入发布订阅者模式解决这个问题。</h4>
-    <input type="text" v-model="message">
+    <h4>{{title}}</h4>
+    <input type="text" v-model="message.detail">
+    <button @click="changeMessage">修改数据</button>
   </div>
   <!-- <script src="/docs/vue/vue/defineProperty.js"></script>
   <script src="/docs/vue/vue/proxy.js"></script> -->
@@ -38,6 +38,7 @@
     class Vue {
       constructor(options) {
         this.$data = options.data;
+        this.$methods = options.methods;
         this.$el = document.querySelector(options.el);
         this.proxyData();
 
@@ -54,8 +55,21 @@
 
       render() {
         // 更新视图
+        const h4 = this.$el.querySelector('h4');
+        h4.textContent = this.$data.title;
         const input = this.$el.querySelector('input');
         input.value = this.$data.message.detail;
+
+        // 监听input的变化
+        input.oninput = (e) => {
+          this.$data.message.detail = e.target.value;
+        };
+
+        // 监听button的点击
+        const button = this.$el.querySelector('button');
+        button.onclick = () => {
+          this.$methods.changeMessage.call(this.$data);
+        };
       }
     }
 
@@ -63,13 +77,17 @@
     const vm = new Vue({
       el: '#app',
       data: {
+        title: '未使用发布订阅者模式、虚拟DOM的Vue实现',
         message: {
           detail: '第一次的数据'
         },
+      },
+      methods: {
+        changeMessage() {
+          this.message.detail = '修改后的数据';
+        }
       }
     });
-    vm.$data.message.detail = 'js修改的数据';
-
   </script>
 </body>
 

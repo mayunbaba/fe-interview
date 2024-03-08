@@ -1,14 +1,11 @@
 # vue双向绑定原理
 
-<!-- <script>
-import './vue/defineProperty.js'
-import './vue/proxy.js'
-</script> -->
 ## 数据劫持
 - Object.defineProperty: 劫持属性。重写get、set方法劫持数据
 - Proxy: 代理对象。重写get、set 方法劫持数据
-  [demo](http://127.0.0.1:5500/example/jiechi.html)
+  [数据劫持demo](http://127.0.0.1:5500/example/jiechi/index.html)
 
+## vue响应式原理
 
 ## 双向绑定原理
 Vue 数据双向绑定原理是通过 数据劫持 + 发布者-订阅者模式 的方式来实现的。
