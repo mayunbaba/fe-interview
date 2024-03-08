@@ -1,23 +1,26 @@
-// 事件总线
 export default class Dep {
   constructor() {
     // 懒汉式单例模式
-    if (!this.instance) {
-      this.instance = this;
-      this.subs = [];
+    if (!Dep.instance) {
+      Dep.instance = this;
+      this.events = {};
     }
-    
-    return this.instance;
+    return Dep.instance
   }
-
-  addSub(sub) {
-    this.subs.push(sub);
+  addSub(event, callback) {
+    if (!this.events[event]) {
+      this.events[event] = [];
+    }
+    this.events[event].push(callback);
   }
-
-  notify() {
-    this.subs.forEach(sub => {
-      console.log('sub', sub);
-      sub.update();
-    })
+  notify(event, ...args) {
+    if (this.events[event]) {
+      this.events[event].forEach(cb => cb(...args));
+    }
+  }
+  removeSub(event, callback) {
+    if (this.events[event]) {
+      this.events[event] = this.events[event].filter(cb => cb !== callback);
+    }
   }
 }

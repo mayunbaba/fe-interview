@@ -1,5 +1,4 @@
-import Watcher from './watcher.js';
-
+import Watcher from "./watcher.js";
 export default class Compile {
   constructor(el, vm) {
     this.el = document.querySelector(el);
@@ -15,7 +14,7 @@ export default class Compile {
   node2fragment(el) {
     let fragment = document.createDocumentFragment();
     let firstChild;
-    while (firstChild = el.firstChild) {
+    while ((firstChild = el.firstChild)) {
       // appendChild具有移动性
       fragment.appendChild(firstChild);
     }
@@ -24,104 +23,125 @@ export default class Compile {
 
   compile(fragment) {
     let childNodes = fragment.childNodes;
-    [...childNodes].forEach(node => {
+    [...childNodes].forEach((node) => {
       if (this.isElementNode(node)) {
+        // 标签节点
         this.compileElement(node);
         this.compile(node);
       } else {
+        // 文本节点（代码中的空格，回车，一般不写代码）
         this.compileText(node);
       }
-    })
+    });
   }
 
   // 解析元素节点
   compileElement(node) {
     let attributes = node.attributes;
-    [...attributes].forEach(attr => {
+    [...attributes].forEach((attr) => {
       let { name, value: expr } = attr;
       if (this.isDirective(name)) {
-        let [, directive] = name.split('-');
-        let [directiveName, eventName] = directive.split(':');
-        console.log(directiveName, eventName);
-        CompileUtil[directiveName](node, expr, this.vm, eventName);
+        let [, directive] = name.split("-");
+        let [directiveName, eventName] = directive.split(":");
+        console.log(
+          `v-${directiveName}`,
+          "节点：none",
+          node,
+          "链路：expr",
+          expr,
+          "绑定事件名",
+          eventName
+        );
+        if (directiveName === "on") {
+          CompileUtil["eventHandler"](node, this.vm, eventName, expr);
+        } else {
+          CompileUtil[directiveName](node, this.vm, expr);
+        }
       }
-    })
+    });
   }
 
   // 解析文本节点
   compileText(node) {
-    let content = node.textContent;
-    if (/\{\{(.+?)\}\}/.test(content)) {
-      CompileUtil['text'](node, content, this.vm);
-    }
+    console.log("文本节点：", node);
+    CompileUtil.mustache(node, this.vm);
   }
-
 
   isElementNode(node) {
     return node.nodeType === 1;
   }
 
-
   isDirective(attrName) {
-    return attrName.startsWith('v-');
+    return attrName.startsWith("v-");
   }
 }
 
 let CompileUtil = {
-  // 获取实例上对应的数据
-  getVal(expr, vm) {
-    return expr.split('.').reduce((data, current) => {
-      return data[current];
-    }, vm.$data)
-  },
-  // 设置实例上对应的数据
-  setVal(expr, vm, inputVal) {
-    console.log(expr, vm, inputVal);
-    return expr.split('.').reduce((data, current, index, arr) => {
-      if (index === arr.length - 1) {
-        return data[current] = inputVal;
-      }
-      return data[current];
-    }, vm.$data)
-  },
-  model(node, expr, vm) {
-    let fn = this.updater['modelUpdater'];
-    new Watcher(vm, expr, (newVal) => {
-      fn(node, newVal);
-    })
-    node.addEventListener('input', (e) => {
-      let inputVal = e.target.value;
-      this.setVal(expr, vm, inputVal);
-    })
-    let value = this.getVal(expr, vm);
-    fn(node, value);
-  },
-  html() {
-
-  },
-  // 获取文本编译后的结果
-  getContentVal(expr, vm) {
-    return expr.replace(/\{\{(.+?)\}\}/g, (...args) => {
-      return this.getVal(args[1], vm);
-    })
-  },
-  text(node, expr, vm) {
-    let fn = this.updater['textUpdater'];
-    let value = expr.replace(/\{\{(.+?)\}\}/g, (...args) => {
-      new Watcher(vm, args[1], (newVal) => {
-        fn(node, this.getContentVal(expr, vm));
-      })
-      return this.getVal(args[1], vm);
-    })
-    fn(node, value);
-  },
-  updater: {
-    modelUpdater(node, value) {
-      node.value = value;
-    },
-    textUpdater(node, value) {
-      node.textContent = value;
+  mustache(node, vm) {
+    let txt = node.textContent;
+    // 匹配{{xxx}}的文本
+    let reg = /\{\{(.+)\}\}/;
+    if (reg.test(txt)) {
+      let expr = RegExp.$1;
+      node.textContent = txt.replace(reg, this.getVMValue(vm, expr));
+      new Watcher(vm, expr, (newValue) => {
+        node.textContent = newValue;
+      });
     }
-  }
-}
+  },
+  text(node, vm, expr) {
+    node.textContent = this.getVMValue(vm, expr);
 
+    // 通过watcher对象，监听expr的数据变化
+    new Watcher(vm, expr, (newValue) => {
+      node.textContent = newValue;
+    });
+  },
+  html(node, vm, expr) {
+    node.innerHtml = this.getVMValue(vm, expr);
+    new Watcher(vm, expr, (newValue) => {
+      node.innerHtml = newValue;
+    });
+  },
+  model(node, vm, expr) {
+    node.value = this.getVMValue(vm, expr);
+    let that = this;
+    // 实现双向的数据绑定，给node注册input事件
+    node.addEventListener("input", function () {
+      that.setVMValue(vm, expr, this.value);
+    });
+    new Watcher(vm, expr, (newValue) => {
+      node.value = newValue;
+    });
+  },
+  eventHandler(node, vm, type, expr) {
+    // 给当前元素注册事件
+    let eventType = type;
+    // 错误处理
+    let fn = vm.$methods && vm.$methods[expr];
+    if (eventType && fn) {
+      // 将方法的this指向当前实例vm
+      node.addEventListener(eventType, fn.bind(vm));
+    }
+  },
+  // 获取VM中的数据
+  getVMValue(vm, expr) {
+    let data = vm.$data;
+    expr.split(".").forEach((key) => {
+      data = data[key];
+    });
+    return data;
+  },
+  // 设置VM中的数据
+  setVMValue(vm, expr, value) {
+    let data = vm.$data;
+    let arr = expr.split(".");
+    arr.forEach((key, index) => {
+      if (index < arr.length - 1) {
+        data = data[key];
+      } else {
+        data[key] = value;
+      }
+    });
+  },
+};

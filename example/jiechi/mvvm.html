@@ -7,24 +7,33 @@
 </head>
 <body>
   <div id="app">
+    没有标签的文本
+    <div>
+      <span>v-text：</span><span v-text="a.b"></span>
+    </div>
     <input type="text" v-model="message" >
     <p>{{message}}</p>
+    <button v-on:click="changeMessage">点我</button>
   </div>
   <script type="module">
     import MVVM from './mvvm/index.js';
     const vm = new MVVM({
       el: '#app',
       data: {
-        message: 'hello MVVM!'
+        message: 'hello MVVM!',
+        a: {
+          b: 1
+        }
       },
       methods: {
-        changeMessage(e) {
-          this.message = e.target.value;
+        changeMessage() {
+          this.message = '点击事件修改了message';
         }
       }
     });
     // console.log(vm);
     vm.message = 'hello world!';
+    vm.a.b = 2;
   </script>
 </body>
 </html>
