@@ -27,7 +27,7 @@ class Compiler {
     return fragment;
   }
   /*
-      编译文档碎片  
+    编译文档碎片  
   */
   compile(fragment) {
     let childNodes = fragment.childNodes;
