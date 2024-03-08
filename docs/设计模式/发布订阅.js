@@ -22,6 +22,7 @@ class Dep {
 }
 
 const dep = new Dep();
+const dep2 = new Dep();
 
 // 订阅者1 （米粉）
 dep.addSub('雷军', buy);

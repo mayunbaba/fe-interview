@@ -7,6 +7,9 @@
 
 ## 递归
 
+## 单例模式
+## 发布订阅模式
+## createDocumentFragment
 ## mvvm模式
 
 ## 双向绑定原理

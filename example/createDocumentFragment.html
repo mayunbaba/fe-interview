@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>createDocumentFragment</h1>
+    <p>createDocumentFragment() 方法创建了一个新的空白的 DocumentFragment 对象。</p>
+    <p>DocumentFragment 对象可以包含多个子节点，这些子节点可以是 Element 节点、Text 节点、Comment 节点、ProcessingInstruction 节点。</p>
+    <p>DocumentFragment 对象不是真实 DOM 树的一部分，它的变化不会触发 DOM 树的 (re)render。因此，使用 DocumentFragment 会带来更好的性能。</p>
+    <p>DocumentFragment 对象可以使用 appendChild() 或 insertBefore() 方法添加子节点。</p>
+    <p>DocumentFragment 对象可以使用 cloneNode() 方法克隆。</p>
+    <p>DocumentFragment 对象可以使用 firstChild 属性获取第一个子节点。</p>
+    <p>DocumentFragment 对象可以使用 lastChild 属性获取最后一个子节点。</p>
+  </div>
+
+  <script>
+    const el = document.getElementById('app');
+    let fragment = document.createDocumentFragment();
+    // appendChild() 方法将指定的节点添加到调用该方法的节点的子节点列表的末尾。
+    // 他是移动元素，所以el中的元素会被移除
+    fragment.appendChild(el.firstChild);
+    fragment.appendChild(el.firstChild);
+    let firstChild;
+    while (firstChild = el.firstChild) {
+      console.log(firstChild, firstChild.nodeType);
+      fragment.appendChild(firstChild);
+    }
+    console.log(fragment);
+  </script>
+</body>
+</html>
