@@ -15,6 +15,7 @@ export default defineConfig({
       { text: "WebApi", link: "/WebApi/DOM" },
       { text: "Vue", link: "/vue/" },
       {text: "HTTP", link: "/http/" },
+      { text: "设计模式", link: "/设计模式/单例" },
       { text: "开发小记", link: "/coding/轮询" },
       // { text: "React", link: "/react" },
       // { text: "Node", link: "/node" },
@@ -64,6 +65,19 @@ export default defineConfig({
       ],
       "/开发小记": [
         { text: "轮询", link: "/coding/轮询" },
+      ],
+      "/设计模式": [
+        { text: "单例", link: "/设计模式/单例" },
+        { text: "发布订阅", link: "/设计模式/发布订阅" },
+        { text: "MVVM", link: "/设计模式/MVVM"},
+        { text: "策略", link: "/设计模式/策略" },
+        { text: "代理", link: "/设计模式/代理" },
+        { text: "迭代器", link: "/设计模式/迭代器" },
+        { text: "装饰器", link: "/设计模式/装饰器" },
+        { text: "适配器", link: "/设计模式/适配器" },
+        { text: "组合", link: "/设计模式/组合" },
+        { text: "享元", link: "/设计模式/享元" },
+        { text: "桥接", link: "/设计模式/桥接" },
       ],
       "/vue": [
         { text: "vue基础", link: "/vue/" },

@@ -5,6 +5,10 @@
 - Proxy: 代理对象。重写get、set 方法劫持数据
   [数据劫持demo](http://127.0.0.1:5500/example/jiechi/index.html)
 
+## 递归
+
+## mvvm模式
+
 ## vue响应式原理
 
 ## 双向绑定原理
