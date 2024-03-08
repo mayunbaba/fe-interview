@@ -32,31 +32,37 @@
       },
       methods: {
         changeMessage() {
-          this.$data.message.detail = '修改后的数据';
+          this.message.detail = '修改后的数据';
         },
         add() {
-          this.$data.count++;
+          this.count++;
         }
       },
       render() {
         const h4 = document.querySelector('h4');
-        h4.innerHTML = this.$data.title;
+        h4.innerHTML = this.title;
         const input = document.querySelector('input');
-        input.value = this.$data.message.detail;
+        input.value = this.message.detail;
 
         const input2 = document.querySelectorAll('input')[1];
-        input2.value = this.$data.count;
+        input2.value = this.count;
       }
     });
 
     // 绑定点击事件
     document.querySelector('button').addEventListener('click', function () {
       vm.changeMessage.call(vm);
-      vm.render();
     });
     document.querySelectorAll('button')[1].addEventListener('click', function () {
       vm.add.call(vm);
-      vm.render();
+    });
+    // v-model
+    document.querySelector('input').addEventListener('input', function (e) {
+      vm.$data.message.detail = e.target.value;
+    });
+    document.querySelectorAll('input')[1].addEventListener('input', function (e) {
+      console.log(e.target.value);
+      vm.$data.count = e.target.value;
     });
   </script>
 </body>

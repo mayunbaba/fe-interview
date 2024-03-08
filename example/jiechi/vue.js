@@ -21,21 +21,27 @@ class Vue {
   constructor(options) {
     this.$data = options.data;
     this.$methods = options.methods;
-    options.methods && Object.keys(options.methods).forEach(key => {
-      this[key] = options.methods[key];
-    });
     this.render = options.render;
     this.$el = document.querySelector(options.el);
     this.proxyData();
 
+    // 把methods中的方法代理到Vue实例上
+    this.proxyMethods();
+
     // 初始化视图
-    this.render.call(this);
+    this.render.call(this.$data);
   }
 
   proxyData() {
     // 使用Proxy代理data对象
     this.$data = createProxy(this.$data, () => {
-      this.render.call(this);
+      this.render.call(this.$data);
+    });
+  }
+
+  proxyMethods() {
+    Object.keys(this.$methods).forEach(key => {
+      this[key] = this.$methods[key].bind(this.$data);
     });
   }
 }
