@@ -5,22 +5,32 @@
 - Proxy: 代理对象。重写get、set 方法劫持数据
   [数据劫持demo](http://127.0.0.1:5500/example/jiechi/index.html)
 
-## 递归
 
 ## 单例模式
+[单例模式](/设计模式/单例.html)
 ## 发布订阅模式
+[发布订阅](/设计模式/发布订阅.html)
 ## createDocumentFragment
+[createDocumentFragment](http://127.0.0.1:5500/example/createDocumentFragment.html)
 ## mvvm模式
+[MVVM](/设计模式/MVVM.html)
 
 ## 双向绑定原理
+参考文章：
+
 [深入响应式原理：vue2](https://v2.cn.vuejs.org/v2/guide/reactivity.html)
+
 [深入响应式原理：vue3](https://cn.vuejs.org/guide/extras/reactivity-in-depth.html)
 
-[实现简单的MVVM：附代码](https://www.jianshu.com/p/0983d2d0a416)
+[实现简单的MVVM：简书](https://www.jianshu.com/p/0983d2d0a416)
+
+[简书code](http://127.0.0.1:5500/example/vue/index.html)
 
 Vue 数据双向绑定原理是通过 数据劫持 + 发布者-订阅者模式 的方式来实现的。
 
-## vue双向绑定原理图
+
+
+## vue双向绑定实现
 ![alt text](image-2.png)
 1. observer 劫持数据
   - 递归代理数据，或者递归劫持数据属性。
@@ -31,5 +41,8 @@ Vue 数据双向绑定原理是通过 数据劫持 + 发布者-订阅者模式 �
   - 添加订阅者，如果数据变化，收到通知，更新视图。
 3. Watcher类是连接observer和compile的桥梁。扮演事件总线的角色
 
+**最终自己实现的版本：**
+[MVVM](http://127.0.0.1:5500/example/jiechi/mvvm.html)
 
-[demo](http://127.0.0.1:5500/example/vue/index.html)
+
+
