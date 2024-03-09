@@ -75,7 +75,7 @@ export default defineConfig({
       ],
       "/vue": [
         { text: "vue基础", link: "/vue/" },
-        { text: "vue双向绑定原理", link: "/vue/vue" },
+        { text: "vue响应式原理", link: "/vue/vue" },
         { text: "vue-router", link: "/vue/vue-router" },
         { text: "vuex", link: "/vue/vuex" },
         // { text: "vue-cli", link: "/vue/vue-cli" },
