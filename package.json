@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "935880623@qq.com",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
