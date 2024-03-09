@@ -17,7 +17,7 @@ export default defineConfig({
       {text: "HTTP", link: "/http/" },
       { text: "WebApi", link: "/WebApi/DOM" },
       { text: "设计模式", link: "/设计模式/单例" },
-      { text: "开发小记", link: "/coding/轮询" },
+      { text: "开发小记", link: "/开发小记/轮询" },
       // { text: "React", link: "/react" },
       // { text: "Node", link: "/node" },
       // { text: "Webpack", link: "/webpack" },
@@ -65,7 +65,8 @@ export default defineConfig({
         { text: "简历", link: "/职场/简历" },
       ],
       "/开发小记": [
-        { text: "轮询", link: "/coding/轮询" },
+        { text: "轮询", link: "/开发小记/轮询" },
+        { text: "eslint", link: "/开发小记/eslint" },
       ],
       "/设计模式": [
         { text: "单例", link: "/设计模式/单例" },
