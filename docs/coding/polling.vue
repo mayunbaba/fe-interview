@@ -1,6 +1,5 @@
 <template>
-  <div>
-  </div>
+  <div>轮询组件demo</div>
 </template>
 <script>
 export default {
