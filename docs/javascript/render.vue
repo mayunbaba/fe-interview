@@ -9,7 +9,7 @@ function die(time) {
   const start = Date.now();
   while (Date.now() - start < time) {}
 }
-// die(3000);
+die(3000);
 export default {
   methods: {
     addDom,
@@ -24,7 +24,7 @@ function addDom() {
   p.innerHTML = "我是新添加的dom " + new Date().toLocaleString();
   const buttonWrap = document.querySelector(".button-wrap");
   buttonWrap.appendChild(p);
-  die(2000);
+  die(5000);
 }
 </script>
 <style>
