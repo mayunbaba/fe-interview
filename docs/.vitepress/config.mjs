@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base:'/fe-interview/',
   title: "前端面试题汇总",
   description: "A VitePress Site",
   themeConfig: {
