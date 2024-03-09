@@ -7,13 +7,11 @@
 </head>
 <body>
   <div id="app">
-    没有标签的文本
+    <p>{{message}}</p>
     <div>
       <span>v-text：</span><span v-text="a.b"></span>
     </div>
     <input type="text" v-model="message" >
-    <p>{{message}}</p>
-    <button v-on:click="changeMessage">点我</button>
   </div>
   <script type="module">
     import Vue from './vue/index.js';
@@ -25,11 +23,6 @@
           b: 1
         }
       },
-      methods: {
-        changeMessage() {
-          this.message = '点击事件修改了message';
-        }
-      }
     });
     console.log(vm);
     console.log(vm.message);
