@@ -3,39 +3,44 @@ class Dep {
   constructor() {
     this.events = {};
   }
-  addSub(event, callback) {
+  // 订阅
+  $on(event, callback) {
     if (!this.events[event]) {
       this.events[event] = [];
     }
     this.events[event].push(callback);
   }
-  notify(event, ...args) {
+  // 通知
+  $emit(event, ...args) {
     if (this.events[event]) {
       this.events[event].forEach(cb => cb(...args));
     }
   }
-  removeSub(event, callback) {
+  $off(event, callback) {
     if (this.events[event]) {
       this.events[event] = this.events[event].filter(cb => cb !== callback);
     }
   }
 }
 
-const dep = new Dep();
-const dep2 = new Dep();
+const dep = new Dep(); // 微博平台
+const dep2 = new Dep(); // 小红书
 
 // 订阅者1 （米粉）
-dep.addSub('雷军', buy);
+dep.$on('雷军', buy);
 
 // 订阅者2 （米黑）
-dep.addSub('雷军', notBuy);
+dep.$on('雷军', notBuy);
+
+// 小红书
+dep2.$on('雷军', buy);
 
 // 发布者 （雷军）
-dep.notify('雷军', '小米14发布', '预售开始了');
-dep.notify('雷军', '小米su7发布', '定价确实有点贵');
+// dep.$emit('雷军', '小米14发布', '预售开始了');
+dep.$emit('雷军', '小米su7发布', '定价确实有点贵');
 console.log('米粉: 我们只是长大了，不是变富了, 买不起了, 取关了');
-dep.removeSub('雷军', buy);
-dep.notify('雷军', '小米su7降价了', '9.9W，预售开始了');
+dep.$off('雷军', buy);
+dep.$emit('雷军', '小米su7降价了', '9.9W，预售开始了');
 
 
 function buy(product) {

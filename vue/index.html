@@ -6,8 +6,7 @@
   <title>MVVM</title>
 </head>
 <body>
-  <div id="app">
-    <p>{{message}}</p>
+  <div id="app"><p>{{message}}</p>
     <div>
       <span>v-text：</span><span v-text="a.b"></span>
     </div>
@@ -25,6 +24,7 @@
       },
     });
     console.log(vm);
+    console.log(vm._data.message)
     console.log(vm.message);
     // vm.message = 'hello world!';
     // vm.a.b = 2;

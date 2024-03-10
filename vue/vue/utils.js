@@ -1,3 +1,4 @@
+// 匹配插值表达是 {{}}
 export const defaultTagRE = /\{\{(.+)\}\}/
 
 // {{name}} => name
