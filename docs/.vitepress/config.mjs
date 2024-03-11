@@ -65,6 +65,7 @@ export default defineConfig({
         { text: "简历", link: "/职场/简历" },
       ],
       "/开发小记": [
+        { text: '官方文档', link: "/开发小记/官方文档"},
         { text: "轮询", link: "/开发小记/轮询" },
         { text: "eslint", link: "/开发小记/eslint" },
       ],
