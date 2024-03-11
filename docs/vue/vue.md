@@ -26,6 +26,8 @@
 
 [简书code](http://127.0.0.1:5500/example/vue/index.html)
 
+
+
 Vue 2 使用了 Object.defineProperty 方法对数据对象进行劫持。通过该方法可以定义对象的属性，并在属性的读取（get）和设置（set）过程中添加额外的逻辑。
 
 模板编译：在模板编译阶段，Vue 会解析模板中的指令和表达式，并为每个指令和表达式创建对应的 Watcher 对象。这些 Watcher 对象会订阅相应数据的变化，并在变化时触发更新操作。
@@ -42,7 +44,7 @@ Dep: Dep是一个事件总线，发布者和订阅者的沟通桥梁。
 
 
 
-## vue双向绑定实现
+## vue响应式实现
 ![alt text](image-1.png)
 1. observer 劫持数据
   - 递归代理数据，或者递归劫持数据属性。
@@ -52,6 +54,14 @@ Dep: Dep是一个事件总线，发布者和订阅者的沟通桥梁。
   - 根据指令绑定事件
   - 添加订阅者，如果数据变化，收到通知，更新视图。
 3. Watcher类是连接observer和compile的桥梁。扮演事件总线的角色。
+
+Vue2 响应式原理是通过数据劫持、发布订阅者模式实现的。
+ - Observer函数，数据劫持。 内部实现，Object.definePerproty和Proxy，重写set方法，添加通知。
+ - Compile解析template，绑定事件，添加订阅
+ - 发布订阅模式。
+  
+用到的设计模式、文档片段、Diff算法、虚拟DOM
+
 
 **最终自己实现的版本：**
 [MVVM](http://127.0.0.1:5500/example/jiechi/mvvm.html)

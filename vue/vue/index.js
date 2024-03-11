@@ -1,5 +1,5 @@
 import Compile from "./compile.js"
-
+import Observer from "./observer.js"
 export default class Vue {
   constructor(options) {
     this.$el = options.el
@@ -8,6 +8,8 @@ export default class Vue {
     this.proxy(this._data)
     // 解析模板，渲染页面
     new Compile(this.$el, this)
+    // 数据劫持
+    new Observer(this._data)
   }
 
   proxy(obj) {

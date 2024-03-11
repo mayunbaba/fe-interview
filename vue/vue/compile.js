@@ -4,7 +4,7 @@
  * 解析fragment，根据指令绑定数据和事件
  * 将fragment添加到dom节点
  */
-
+import Dep from './dep.js'
 import {
   defaultTagRE,
   removeDefaultTag,
@@ -12,6 +12,8 @@ import {
   isDirective,
   getDirectiveName
 } from './utils.js'
+
+let dep = new Dep();
 
 export default class Compile {
   constructor(el, vm) {
@@ -58,6 +60,9 @@ export default class Compile {
       let expr = removeDefaultTag(text)
       // console.log(expr, getValue(this.$vm, expr))
       node.textContent = text.replace(defaultTagRE, getValue(this.$vm, expr))
+      dep.addSub(expr, () => {
+        node.textContent = text.replace(defaultTagRE, getValue(this.$vm, expr))
+      })
     }
   }
 
@@ -70,8 +75,22 @@ export default class Compile {
         const directiveName = getDirectiveName(attr.name)
         const expr = attr.value
         console.log(directiveName, expr, '值');
-        node.textContent = getValue(this.$vm, expr)
-        node.value = getValue(this.$vm, expr)
+        if (directiveName === 'model') {
+          node.value = getValue(this.$vm, expr)
+          dep.addSub(expr, () => {
+            node.value = getValue(this.$vm, expr)
+          })
+          // 监听input事件
+          node.addEventListener('input', (e) => {
+            this.$vm[expr] = e.target.value
+          })
+        } else if (directiveName === 'text') {
+          node.textContent = getValue(this.$vm, expr)
+          console.log(expr, 'expr');
+          dep.addSub(expr, () => {
+            node.textContent = getValue(this.$vm, expr)
+          })
+        }
       }
     })
   }
