@@ -62,7 +62,7 @@ export default defineConfig({
         { text: "star模型", link: "/职场/star" },
         { text: "spetf模型", link: "/职场/spetf" },
         { text: "pyramid模型", link: "/职场/pyramid" },
-        { text: "简历", link: "/职场/简历" },
+        // { text: "简历", link: "/职场/简历" },
       ],
       "/开发小记": [
         { text: '官方文档', link: "/开发小记/官方文档"},
