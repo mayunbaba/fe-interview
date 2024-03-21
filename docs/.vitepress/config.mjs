@@ -62,13 +62,14 @@ export default defineConfig({
         { text: "star模型", link: "/职场/star" },
         { text: "spetf模型", link: "/职场/spetf" },
         { text: "pyramid模型", link: "/职场/pyramid" },
-        // { text: "简历", link: "/职场/简历" },
+        { text: "简历", link: "/职场/简历" },
       ],
       "/开发小记": [
         { text: '官方文档', link: "/开发小记/官方文档"},
         { text: "华为OD", link: "/开发小记/华为OD" },
         { text: "轮询", link: "/开发小记/轮询" },
         { text: "eslint", link: "/开发小记/eslint" },
+        { text: "vue3学习", link: "/开发小记/vue3学习" },
       ],
       "/设计模式": [
         { text: "单例", link: "/设计模式/单例" },

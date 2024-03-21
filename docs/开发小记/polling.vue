@@ -10,23 +10,27 @@ export default {
     }
   },
   mounted() {
-    this.startPolling()
     this.fetchData()
+    this.startPolling()
+    window.addEventListener('visibilitychange', this.fetchData)
   },
   beforeDestroy() {
     this.stopPolling()
+    window.removeEventListener('visibilitychange', this.fetchData)
   },
   methods: {
     startPolling() {
       this.timer = setInterval(() => {
-        !document.hidden && this.fetchData()
-      }, 1000)
+        this.fetchData()
+      }, 5000)
     },
     stopPolling() {
       clearInterval(this.timer)
     },
     fetchData() {
-      fetch('https://www.baidu.com/')
+      if (document.hidden) return
+      console.log('fetchData')
+      // fetch('https://www.baidu.com/')
     },
   }
 }
