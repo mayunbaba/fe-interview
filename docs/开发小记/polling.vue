@@ -2,34 +2,30 @@
   <div>轮询组件demo</div>
 </template>
 <script>
+import Polling from './polling.js'
 export default {
   data() {
     return {
-      timer: null,
-      listData: []
+      pollingInstance: null,
     }
   },
-  mounted() {
-    this.fetchData()
-    this.startPolling()
-    window.addEventListener('visibilitychange', this.fetchData)
+  created() {
+    this.pollingInstance = new Polling({
+      getData: this.fetchData,
+      interval: 1000,
+    })
+    this.pollingInstance.start()
   },
   beforeDestroy() {
-    this.stopPolling()
-    window.removeEventListener('visibilitychange', this.fetchData)
+    this.pollingInstance.destroy()
   },
   methods: {
-    startPolling() {
-      this.timer = setInterval(() => {
-        this.fetchData()
-      }, 5000)
-    },
-    stopPolling() {
-      clearInterval(this.timer)
-    },
-    fetchData() {
-      if (document.hidden) return
-      console.log('fetchData')
+    async fetchData() {
+      return await new Promise(resolve => {
+        setTimeout(() => {
+          resolve(Math.random())
+        }, 3000)
+      })
       // fetch('https://www.baidu.com/')
     },
   }
